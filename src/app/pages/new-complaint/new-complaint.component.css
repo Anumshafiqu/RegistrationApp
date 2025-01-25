@@ -1,0 +1,21 @@
+.custom-container {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f8f9fa;
+  }
+  .form-section {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  .image-section img {
+    max-width: 100%;
+    height: auto;
+  }
+  .btn-create {
+    background-color: #007bff;
+    color: white;
+  }
