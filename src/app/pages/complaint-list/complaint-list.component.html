@@ -1,1 +1,200 @@
-<p>complaint-list works!</p>
+<!-- <div class="row d-flex justify-content-center align-items-center h-100">
+    <div class="container" style="height: 500px; overflow-x: auto;">
+      <div class="row">
+        <div *ngFor="let item of complaintList" class="col-3">
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                  <h5 class="card-title">{{item.complaintTitle}}</h5>
+                  <p class="card-text">{{item.complaintDetails}}</p>
+                  <p class="card-text">{{item.createdDate | date : 'dd-mm-yy'}}</p>
+                  <a href="#" class="btn btn-primary" (click)="openModel(item)">Go somewhere</a>
+                </div>
+              </div>
+        </div>
+      </div>
+    </div>
+  </div>  -->
+
+
+
+
+
+<!-- <div class="modal" id="myModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Complaint List</h4>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" (click)="closeModel()"></button>
+        </div>
+        <div class="modal-body">
+            <form>
+                <div class="row">
+                <div class="mb-3 col-md-6">
+                    <input
+                    type="text"
+                    id="complaintTitle"
+                    class="form-control"
+                    placeholder="Enter complaint title"
+                    name="complaintTitle"
+                    [(ngModel)]="complaintObj.ParentDepartmentName"
+                  />
+                  <label for="complaintType" class="form-label">Complaint Type</label>
+
+                </div>
+                <div class="mb-3 col-md-6">
+                    <input
+                    type="text"
+                    id="complaintTitle"
+                    class="form-control"
+                    placeholder="Enter complaint title"
+                    name="complaintTitle"
+                    [(ngModel)]="complaintObj.DepartmentName"
+                  />
+                    <label for="complaintType" class="form-label">Complaint Type</label>
+
+                  </div>
+                </div>
+                <div class="mb-3">
+                  <label for="complaintTitle" class="form-label">Complaint Title</label>
+                  <input
+                    type="text"
+                    id="complaintTitle"
+                    class="form-control"
+                    placeholder="Enter complaint title"
+                    name="complaintTitle"
+                    [(ngModel)]="complaintObj.complaintTitle"
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="complaintDetails" class="form-label">Complaint Details</label>
+                  <textarea
+                    id="complaintDetails"
+                    name="complaintDetails"
+                    class="form-control"
+                    rows="4"
+                    placeholder="Describe your complaint in detail"
+                    [(ngModel)]="complaintObj.complaintDetails"
+                  ></textarea>
+                </div>
+                <div class="form-check mb-3">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    id="agreeCheckbox"
+                    name="isAlreadyReportedThis"
+                    [(ngModel)]="complaintObj.isAlreadyReportedThis"
+                  />
+                  <label class="form-check-label" for="agreeCheckbox">
+                    I agree to the terms and conditions
+                  </label>
+                </div>
+                    <div class="mb-3">
+                        <label for="oldDate" class="form-label">Old Date</label>
+                        <input type="date" id="oldDate" name="oldComplaintNo" class="form-control" [(ngModel)]="complaintObj.oldComplaintNo" />
+                      </div> 
+                      <div class="mb-3">
+                        <label for="oldDate" class="form-label">change status</label>
+                        <select id="complaintType" name="ComplaintStatusId" [(ngModel)]="complaintObj.ComplaintStatusId" class="form-select">
+                            <option selected disabled>Select Complaint Type</option>
+                            <option *ngFor="let item of  StatusList" [value]="item.masterId">
+                                {{ item.masterName}}
+                              </option>
+                          </select>
+                      </div>   
+              </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal" (click)="closeModel()">Close</button>
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal" (click)="updatestatus()">update status</button>
+        </div>
+  
+      </div>
+    </div>
+  </div> -->
+
+
+
+<div class="container">
+    <div class="d-flex justify-content-end mt-2">
+    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#complaintModal">
+        create
+    </button>
+</div>
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="complaintModal" tabindex="-1" aria-labelledby="complaintModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="complaintModalLabel">Create Complaint</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form #complaintForm="ngForm">
+                        <div class="mb-3">
+                            <label for="title" class="form-label">Title</label>
+                            <input type="text" id="title" class="form-control" [(ngModel)]="newComplaint.title"
+                                name="title" required />
+                        </div>
+                        <div class="mb-3">
+                            <label for="description" class="form-label">Description</label>
+                            <textarea id="description" class="form-control" [(ngModel)]="newComplaint.description"
+                                name="description" required></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                        Close
+                    </button>
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="addComplaint()">
+                        Update
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Complaint Cards -->
+    <div class="row">
+
+        <div class="col-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Complaint card</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                        card's content.</p>
+                    <button class="btn btn-primary ms-auto ml-auto" data-bs-toggle="modal"
+                        data-bs-target="#complaintModal">
+                        create
+                    </button>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Complaint card</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                        card's content.</p>
+                    <button class="btn btn-primary ms-auto ml-auto" data-bs-toggle="modal"
+                        data-bs-target="#complaintModal">
+                        create
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="">
+
+        <div *ngFor="let complaint of complaints" class="card mb-3" style="width: 18rem">
+            <div class="card-body">
+                <h5 class="card-title">{{ complaint.title }}</h5>
+                <p class="card-text">{{ complaint.description }}</p>
+            </div>
+        </div>
+    </div>
+</div>

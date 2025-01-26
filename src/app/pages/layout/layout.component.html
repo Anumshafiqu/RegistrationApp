@@ -1,6 +1,6 @@
-<section class="vh-100">
+<section class="">
     <div class="container-fluid h-custom">
-        <router-outlet></router-outlet>
+        
         <div
             class="d-flex flex-column flex-md-row text-center text-md-start justify-content-between py-4 px-4 px-xl-5 bg-primary text-white">
             <!-- Left Section (Title) -->
@@ -10,9 +10,9 @@
 
             <!-- Right Section (Button and User Icon) -->
             <div class="d-flex align-items-center">
-                <a routerLink="dashboard" class="text-white me-4">
+                <!-- <a routerLink="dashboard" class="text-white me-4">
                     <button class="btn btn-success btn-sm">Dashboard</button>
-                </a>
+                </a> -->
                 <a routerLink="new-complaint" class="text-white me-4">
                     <button class="btn btn-success btn-sm">New Complaint</button>
                 </a>
@@ -26,9 +26,9 @@
                 }
 
 
-                <a href="#" class="text-white me-4">
+                <!-- <a href="#" class="text-white me-4">
                     <i class="fa fa-user"></i> {{loggedUserData?.userName}}
-                </a>
+                </a> -->
                 <a href="#" class="text-white me-4">
                     <button class="btn btn-success btn-sm" (click)="onLogOff()">loggeduser</button>
                 </a>
@@ -36,3 +36,6 @@
         </div>
     </div>
 </section>
+<div class="container">
+    <router-outlet></router-outlet>
+</div>

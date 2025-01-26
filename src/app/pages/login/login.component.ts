@@ -49,7 +49,7 @@ export class LoginComponent {
     this.masterService.ShowLogin(this.LoginObj).subscribe((res:any)=>{
       if(res.result) {
         localStorage.setItem('complaintuser', JSON.stringify(res.data));
-        this.router.navigateByUrl('dashboard');
+        this.router.navigateByUrl('new-complaint');
       }else {
         alert(res.message);
       }

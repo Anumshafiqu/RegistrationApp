@@ -1,5 +1,5 @@
-<div class="container mt-5">
-    <div class="card shadow-lg p-4">
+<div class="container mt-5 d-flex align-items-center justify-content-center">
+    <div class="card shadow-sm p-4 col-8">
       <h2 class="mb-4 text-center">Complaint Form</h2>
       <form>
         <div class="row">
@@ -9,37 +9,31 @@
           <select id="complaintType" name="ParentDepartId" [(ngModel)]="ParentDepartId" class="form-select" (change)="getDepart()">
             <option selected disabled>Select Complaint Type</option>
             <option *ngFor="let item of parentListDepart" [value]="item.departmentId">
-                {{ item.departmentNam }}
+                {{ item.departmentName }}
               </option>
           </select>
         </div>
-        <div class="mb-3 col-md-6">
-            <label for="complaintType" class="form-label">Complaint Type</label>
-            <select id="complaintType" class="form-select" name="childDeptId" [(ngModel)]="complaintObj.childDeptId">
-              <option selected disabled>Select Complaint Type</option>
-              <option value="1">Service</option>
-              <option value="2">Product</option>
-              <option value="3">Other</option>
-            </select>
+          <div class="mb-3 col-md-6">
+            <label for="complaintTitle" class="form-label">Complaint Title</label>
+            <input
+              type="text"
+              id="complaintTitle"
+              class="form-control"
+              placeholder="Enter complaint title"
+              name="complaintTitle"
+              [(ngModel)]="complaintObj.complaintTitle"
+            />
           </div>
-        </div>
+        </div> 
         <!-- Complaint Title -->
-        <div class="mb-3">
-          <label for="complaintTitle" class="form-label">Complaint Title</label>
-          <input
-            type="text"
-            id="complaintTitle"
-            class="form-control"
-            placeholder="Enter complaint title"
-            [(ngModel)]="complaintObj.complaintTitle"
-          />
-        </div>
+
   
         <!-- Complaint Details -->
         <div class="mb-3">
           <label for="complaintDetails" class="form-label">Complaint Details</label>
           <textarea
             id="complaintDetails"
+            name="complaintDetails"
             class="form-control"
             rows="4"
             placeholder="Describe your complaint in detail"
@@ -53,6 +47,7 @@
             class="form-check-input"
             type="checkbox"
             id="agreeCheckbox"
+            name="isAlreadyReportedThis"
             [(ngModel)]="complaintObj.isAlreadyReportedThis"
           />
           <label class="form-check-label" for="agreeCheckbox">
@@ -61,13 +56,16 @@
         </div>
   
         <!-- Old Date Input -->
-        <div class="mb-3">
-          <label for="oldDate" class="form-label">Old Date</label>
-          <input type="date" id="oldDate" class="form-control" [(ngModel)]="complaintObj.oldComplaintNo" />
-        </div>
+         @if (complaintObj.isAlreadyReportedThis) {
+            <div class="mb-3">
+                <label for="oldDate" class="form-label">Old Date</label>
+                <input type="date" id="oldDate" name="oldComplaintNo" class="form-control" [(ngModel)]="complaintObj.oldComplaintNo" />
+              </div>
+         }
+
   
         <!-- Submit Button -->
-        <button type="submit" class="btn btn-primary w-100">
+        <button type="submit" class="btn btn-primary" (click)="onSave()">
           Submit Complaint
         </button>
       </form>

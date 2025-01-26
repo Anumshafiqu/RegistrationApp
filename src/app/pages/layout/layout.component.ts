@@ -7,12 +7,12 @@ import { Router } from '@angular/router';
   styleUrl: './layout.component.css'
 })
 export class LayoutComponent {
-loggedUserData :any ;
-router = inject(Router)
+  loggedUserData: any;
+  router = inject(Router)
   constructor() {
     const localData = JSON.stringify('complaintuser');
-    if(localData != null) {
-this.loggedUserData =  JSON.parse(localData)
+    if (localData != null) {
+      this.loggedUserData = JSON.parse(localData)
     }
   }
   onLogOff() {
